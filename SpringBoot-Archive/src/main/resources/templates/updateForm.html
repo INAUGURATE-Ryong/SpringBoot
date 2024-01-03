@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Update Form Page</title>
+</head>
+<body>
+<h1>User Update Page</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>userCode</th>
+    <th>userName</th>
+  </tr>
+  </thead>
+  <tbody>
+  <form action="/update" method="post">
+    <tr>
+      <th><input type="text" name="userCode" th:value="${userCode}" placeholder="Enter userCode"></th>
+      <th><input type="text" name="userName" th:value="${userName}" placeholder="Enter userName"></th>
+    </tr>
+    <!-- 이곳에 업데이트에 필요한 다른 필드들도 추가할 수 있습니다. -->
+    <input type="submit" value="Update">
+  </form>
+  </tbody>
+</table>
+<a th:href="@{/list}">리스트</a>&nbsp;&nbsp;<a th:href="@{/sign-up}">회원등록</a>
+</body>
+</html>

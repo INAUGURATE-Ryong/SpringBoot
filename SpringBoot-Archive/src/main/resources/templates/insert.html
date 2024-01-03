@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<div>
+    <h1>User Insert Page</h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>userCode</th>
+            <th>userName</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row:${Alllist}">
+        <th th:text="${vo.userCode}"></th>
+        <th th:text="${vo.userName}"></th>
+        </tr>
+        <tr>
+            <th> <a th:href="@{/list}">리스트</a></th></tr>
+        </tbody>
+
+
+    </table>
+</div>
+</body>
+</html>

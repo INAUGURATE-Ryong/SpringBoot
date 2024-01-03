@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace : 2.x 선택, 3.x 에서는 필수-->
+<!-- TestTableMapper.xml-->
+<mapper namespace="com.example.demo.day2.mapper.TestTableMapper">  <!--namespace 2.x 선택사항이었음, 3.x 이상부터는 필수-->
+
+    <!-- C -->
+    <insert id="insert" parameterType="com.example.demo.day2.domain.TableVo"> <!-- 이거 경로 적을 때 직접  -->
+        INSERT INTO testTable VALUES (#{userCode}, #{userName})
+    </insert>
+
+    <!-- R -->
+    <select id="selectAllList" resultType="hashmap">  <!-- 애가 VO가 아닌 Hashmap이어야 된다!!!! -->
+        SELECT * FROM testTable
+    </select>
+
+    <!-- 	<select id="SelectAllList" resultType="TableVO">
+         select *
+         from testTable
+     </select>  -->
+
+    <select id="selectByUsercode" resultType="hashmap">
+        SELECT * FROM testTable WHERE userCode = #{userCode}
+    </select>
+    <!--
+          <select id="selectByUsercode" resultType="TableVO">
+            select *
+            from testTable
+            WHERE USERCODE = #{userCode}
+        </select>
+     -->
+    <!-- U -->
+    <update id="update" parameterType="com.example.demo.day2.domain.TableVo">
+        UPDATE testTable SET userName=#{userName} WHERE userCode=#{userCode}
+    </update>
+
+    <!-- D -->
+    <delete id="deleteByUserCode">
+        DELETE FROM testTable WHERE userCode = #{userCode}
+    </delete>
+
+
+
+</mapper>

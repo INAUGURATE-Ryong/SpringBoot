@@ -1,0 +1,14 @@
+
+https://aamoos.tistory.com/641#1.11.%20component%20%EC%82%AC%EC%9A%A9
+
+
+implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+<dependency> 
+	<groupId>org.springframework.boot</groupId> 
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+-------------------------------------------------------------------------
+타임리프 기본경로
+spring.thymeleaf.prefix=classpath:/templates/ 
+spring.thymeleaf.suffix=.html

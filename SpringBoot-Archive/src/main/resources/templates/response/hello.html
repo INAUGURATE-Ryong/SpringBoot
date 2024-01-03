@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Spring Annotation 연습하기</title>
+	<style type="text/css">
+		.span{color:red}  /*class명이 span인 것들만 빨간색 적용*/
+		/*span {color:red}  !*span태크 전체에 다 빨간색 적용*!*/
+	</style>
+</head>
+
+
+<body>
+	<h3 th:text="${data}"></h3>
+
+	<table border="1">
+		<tr th:each="emp : ${list}">  <!--each문은 for문-->
+			<td th:text="${emp.empno}">empno</td>
+			<td th:text="${emp.ename}">ename</td>
+		</tr>
+	</table>
+	<hr>
+	'문자' + ' 더하기!' = <span th:text="'문자' + ' 더하기!'"></span><br>
+	'문자 더하기!' = <span th:text="'문자 더하기!'"></span><br>
+	1.1 [[...]] 모델이 있는 값 표현하기 <br>
+	<span>[[${data}]]</span><br>
+
+	<h2>th:utext 사용</h2>
+	<span th:utext="${data}"></span><br>
+
+	<span><input th:value="${data}" type="text" /></span><br>
+	<hr>
+	<div>
+		개발환경 : <span th:text="${@environment.getProperty('test1.context')}"></span>
+		개발URL : <span th:text="${@environment.getProperty('test2.context')}"></span>
+
+		<hr>
+		<span><a th:href="@{https://www.naver.com}">링크</a></span><br>
+		<ul>
+			<li><a th:href="@{/hello}">basic url</a></li>
+			<li><a th:href="@{/hello(param1=${param1}, param2=${param2})}">hello query param</a></li>
+			<li><a th:href="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}">path variable</a></li>
+			<li><a th:href="@{/hello/{param1}(param1=${param1}, param2=${param2})}">path variable + query parameter</a>
+			</li>
+		</ul>
+	</div>
+	
+	<span th:if="${foodMap.food1} == '치킨'">치킨이다!</span>
+	<span th:unless="${foodMap.food1} == '치킨'">치킨이 아니다 ㅠㅠ</span>
+	
+	<hr>
+	<table class="table">
+    <tr>
+        <th>userName</th>
+        <th>userId</th>
+        <th>case</th>
+    </tr>
+
+    <tr th:each="list : ${list}">
+        <td th:text="${list.empno}"></td>
+        <td th:text="${list.ename}"></td>
+        <td th:switch="${list.empno}">
+            <strong th:case="2000">userId0</strong>
+            <strong th:case="3000">userId3</strong>
+        </td>
+    </tr>
+</table>
+
+<hr>
+<span th:text="${foodMap.food1}"></span><br>
+<span>[[${foodMap.food1}]]</span><br>
+HTML
+th:text를 사용하지않고 [[...]]를 사용하여 모델에 있는값을 표현할수 있습니다.
+
+ 
+1.3. th:utext
+<h2>th:utext 사용</h2>
+<span th:utext="${foodMap.food2}"></span><br>
+<span>[[${foodMap.food2])]</span><br><br>
+HTML
+foodMap.put("food2", "<strong>피자</strong>");
+ 
+
+1.4. th:value
+<span><input th:value="${foodMap.food4}" type="text"/></span><br>
+
+
+1.5. #{}
+<span class="span"  th:text="#{test.id}"></span><br>
+<span th:text="#{test.name}"></span><br>
+
+
+ 
+<span ><a th:href="@{https://www.naver.com}">링크</a></span><br>
+HTML
+1.7. th:href
+<ul>
+    <li><a th:href="@{/hello}">basic url</a></li>
+<!--	링크를 클릭하면 /hello로 가라는 뜻  http://localhost:8080/hello -->
+    <li><a th:href="@{/hello(param1=${param1}, param2=${param2})}">hello query param</a></li>
+<!--	http://localhost:8080/hello?param1=world&param2=kosa-->
+    <li><a th:href="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}">path variable</a></li>
+<!--	http://localhost:8080/hello/world/kosa-->
+	<li><a th:href="@{/hello/{param1}(param1=${param1}, param2=${param2})}">path variable + query parameter</a></li>
+<!--	http://localhost:8080/hello/world?param2=kosa-->
+</ul>
+HTML
+
+ 
+
+ 
+
+1.8. th:if, th:unless
+<span th:if="${foodMap.food1} == '치킨'">치킨이다!</span>
+<span th:unless="${foodMap.food1} == '치킨'">치킨이 아니다 ㅠㅠ</span>
+<div th:text="${foodMap}"></div>
+
+
+
+<h2>th:with 사용 (c:set과 같은 느낌)</h2>
+<span th:with="food='바뀐음식'"></span><br><br>
+<!--with는 값세팅-->
+<hr>
+default : <span th:text="${localDateTime}"></span><br>
+yyyy-MM-dd HH:mm:ss : <span th:text="${#temporals.format(localDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span> <br>
+yyyy-MM-dd/a hh:mm : <span th:text="${#temporals.format(localDateTime, 'yyyy-MM-dd/a hh:mm')}"></span><br>
+
+
+<hr>
+<h2>attribute 활용</h2>
+- th:classappend : <input type="text" class="text" th:attrappend="class= ' large'" placeholder="여기에 이름을 넣어주"/><br>
+- checked o : <input type="checkbox" name="active" th:checked="true" /><br>
+- checked x : <input type="checkbox" name="active" th:checked="false" /><br>
+<br><br>
+</body>
+
+</html>

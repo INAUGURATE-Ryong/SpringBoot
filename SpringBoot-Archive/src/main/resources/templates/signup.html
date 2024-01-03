@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up View</title>
+</head>
+<body>
+<div>
+  <h1>Sign Up Page</h1>
+
+  <table border="1">
+    <thead>
+    <tr>
+      <th>userCode</th>
+      <th>userName</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <form action="/sign-up" method="post">
+      <tr>
+        <th><input type="text" name="userCode" th:value="${ userCode }"></th>
+        <th><input type="text" name="userName" th:value="${ userName }"></th>
+      </tr>
+      <input type="submit" value="submit">
+    </form>
+    </tbody>
+    <tr>
+      <td colspan="2">
+        <a th:href="@{/deleteform}">회원삭제</a>
+        &nbsp;&nbsp;<a th:href="@{/list}">회원목록</a>
+        &nbsp;&nbsp;<a th:href="@{/updateform}">회원수정</a>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

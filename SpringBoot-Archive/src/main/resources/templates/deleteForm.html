@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Delete Form Page</title>
+</head>
+<body>
+ <H1>User Delete Page</H1>
+
+      <table border="1">
+        <thead>
+        <tr>
+            <th>userCode</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form action="/deleteform" method="post">
+            <tr>
+                <th><input type="text" name="userCode" th:value="${userCode}"></th>
+            </tr>
+            <input type="submit" value="submit">
+        </form>
+        </tbody>
+    </table>
+    <a th:href="@{/list}">리스트</a>&nbsp;&nbsp;<a th:href="@{/sign-up}">회원등록</a>
+</div>
+</body>
+</html>

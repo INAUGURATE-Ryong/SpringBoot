@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <H1>DB 연동 확인</H1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>USERCODE</th>
+            <th>USERNAME</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="row:${Alllist}">
+            <th th:text="${row.userCode}"></th>
+            <th th:text="${row.userName}"></th>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/sign-up}">회원등록</a>&nbsp;&nbsp;<a th:href="@{/deleteform}">회원삭제</a>
+</div>
+
+</body>
+</html>
