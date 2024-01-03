@@ -12,5 +12,5 @@ public class AddresController {
     @GetMapping("/main")
     public ModelAndView main(){
         return new ModelAndView("address");
-    }
+     }
 }
