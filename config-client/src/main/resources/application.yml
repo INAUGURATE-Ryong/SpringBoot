@@ -1,0 +1,9 @@
+server:
+  port: 9091
+spring:
+  application:
+    name: myclient
+  profiles:
+    active: test
+  config:
+    import: optional:configserver:http://localhost:8888
